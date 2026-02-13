@@ -1,0 +1,257 @@
+:root {
+    --gold: #af944d;
+    --off-white: #fdfcf9;
+    --deep-onyx: #1a1a1a;
+    --royal-wine: #4a0e0e;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    margin: 0;
+    background: var(--off-white);
+    color: var(--deep-onyx);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    background-image: radial-gradient(circle at center, #ffffff 0%, #f3efea 100%);
+}
+
+/* Presidential Card */
+.premium-container {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    padding: 60px 30px;
+    border-radius: 2px;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    border: 1px solid rgba(175, 148, 77, 0.2);
+    transition: opacity 0.8s ease;
+}
+
+.profile-frame {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 30px;
+    border: 1px solid var(--gold);
+    padding: 5px;
+}
+
+.profile-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+h1 {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 4px;
+    font-size: 1.4rem;
+}
+
+.question-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+    height: 140px;
+}
+
+.btn {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+    padding: 18px;
+    border: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+#yesBtn {
+    background: var(--deep-onyx);
+    color: white;
+    width: 100%;
+    z-index: 2;
+    transition: transform 0.3s;
+}
+
+#yesBtn:active {
+    transform: scale(0.95);
+}
+
+#noBtn {
+    background: white;
+    color: var(--deep-onyx);
+    border: 1px solid #ddd;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: all 0.4s ease-out;
+    /* Smooth running movement */
+    white-space: nowrap;
+}
+
+/* Intermediate Message */
+#intermediate {
+    display: none;
+    position: fixed;
+    z-index: 50;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+#intermediate h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    color: var(--deep-onyx);
+}
+
+/* Memories Page */
+#memories {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--off-white);
+    z-index: 100;
+    overflow-y: auto;
+    padding: 60px 15px;
+}
+
+.marriage-intent {
+    max-width: 700px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.photo-card {
+    background: white;
+    padding: 12px;
+    border: 1px solid #eee;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.caption {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    padding: 15px 0;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.signature-block {
+    margin-top: 80px;
+    text-align: center;
+    padding-bottom: 80px;
+}
+
+.signature-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    letter-spacing: 6px;
+}
+
+/* Lightbox Styles */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-img {
+    max-width: 90%;
+    max-height: 90%;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.lightbox-overlay.active .lightbox-img {
+    transform: scale(1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 3rem;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.3s;
+}
+
+.lightbox-close:hover {
+    color: var(--gold);
+}
+
+/* Typewriter Cursor */
+.typewriter-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    background-color: var(--gold);
+    vertical-align: bottom;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
